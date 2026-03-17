@@ -25,6 +25,10 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees -Method Get
   {
     "id": 1,
     "name": "John Doe",
+    "age": 30,
+    "familySize": 4,
+    "school": "MIT",
+    "location": "Jakarta",
     "department": { "id": 2, "name": "IT" }
   }
 ]
@@ -52,6 +56,10 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees/1 -Method Get
 {
   "id": 1,
   "name": "John Doe",
+  "age": 30,
+  "familySize": 4,
+  "school": "MIT",
+  "location": "Jakarta",
   "department": { "id": 2, "name": "IT" }
 }
 ```
@@ -65,7 +73,7 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees/1 -Method Get
 ```bash
 curl -s -X POST http://localhost:8081/api/employees \
   -H "Content-Type: application/json" \
-  -d '{"name": "John Doe", "department": {"id": 2}}'
+  -d '{"name": "John Doe", "age": 30, "familySize": 4, "school": "MIT", "location": "Jakarta", "department": {"id": 2}}'
 ```
 
 ### PowerShell
@@ -73,7 +81,7 @@ curl -s -X POST http://localhost:8081/api/employees \
 ```powershell
 Invoke-RestMethod -Uri http://localhost:8081/api/employees -Method Post `
   -ContentType "application/json" `
-  -Body '{"name": "John Doe", "department": {"id": 2}}'
+  -Body '{"name": "John Doe", "age": 30, "familySize": 4, "school": "MIT", "location": "Jakarta", "department": {"id": 2}}'
 ```
 
 ### Response (201 Created)
@@ -82,6 +90,10 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees -Method Post `
 {
   "id": 1,
   "name": "John Doe",
+  "age": 30,
+  "familySize": 4,
+  "school": "MIT",
+  "location": "Jakarta",
   "department": { "id": 2, "name": "IT" }
 }
 ```
@@ -95,7 +107,7 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees -Method Post `
 ```bash
 curl -s -X PUT http://localhost:8081/api/employees/1 \
   -H "Content-Type: application/json" \
-  -d '{"name": "Jane Doe", "department": {"id": 1}}'
+  -d '{"name": "Jane Doe", "age": 28, "familySize": 3, "school": "UI", "location": "Bandung", "department": {"id": 1}}'
 ```
 
 ### PowerShell
@@ -103,7 +115,7 @@ curl -s -X PUT http://localhost:8081/api/employees/1 \
 ```powershell
 Invoke-RestMethod -Uri http://localhost:8081/api/employees/1 -Method Put `
   -ContentType "application/json" `
-  -Body '{"name": "Jane Doe", "department": {"id": 1}}'
+  -Body '{"name": "Jane Doe", "age": 28, "familySize": 3, "school": "UI", "location": "Bandung", "department": {"id": 1}}'
 ```
 
 ### Response
@@ -112,6 +124,10 @@ Invoke-RestMethod -Uri http://localhost:8081/api/employees/1 -Method Put `
 {
   "id": 1,
   "name": "Jane Doe",
+  "age": 28,
+  "familySize": 3,
+  "school": "UI",
+  "location": "Bandung",
   "department": { "id": 1, "name": "HR" }
 }
 ```

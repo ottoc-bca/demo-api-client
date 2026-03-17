@@ -39,6 +39,10 @@ public class EmployeeService {
 	public Optional<Employee> update(Long id, Employee employee) {
 		return employeeRepository.findById(id).map(existing -> {
 			existing.setName(employee.getName());
+			existing.setAge(employee.getAge());
+			existing.setFamilySize(employee.getFamilySize());
+			existing.setSchool(employee.getSchool());
+			existing.setLocation(employee.getLocation());
 			if (employee.getDepartment() != null && employee.getDepartment().getId() != null) {
 				existing.setDepartment(
 						departmentRepository.findById(employee.getDepartment().getId())
