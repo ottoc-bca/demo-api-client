@@ -29,8 +29,9 @@ public class EmployeeService {
 
 	public Employee save(Employee employee) {
 		if (employee.getDepartment() != null && employee.getDepartment().getId() != null) {
-			departmentRepository.findById(employee.getDepartment().getId())
-					.ifPresent(employee::setDepartment);
+			employee.setDepartment(
+					departmentRepository.findById(employee.getDepartment().getId())
+							.orElse(null));
 		}
 		return employeeRepository.save(employee);
 	}
@@ -39,8 +40,9 @@ public class EmployeeService {
 		return employeeRepository.findById(id).map(existing -> {
 			existing.setName(employee.getName());
 			if (employee.getDepartment() != null && employee.getDepartment().getId() != null) {
-				departmentRepository.findById(employee.getDepartment().getId())
-						.ifPresent(existing::setDepartment);
+				existing.setDepartment(
+						departmentRepository.findById(employee.getDepartment().getId())
+								.orElse(null));
 			}
 			return employeeRepository.save(existing);
 		});
