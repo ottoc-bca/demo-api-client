@@ -15,6 +15,9 @@ public class TaxEngine {
 	private static final BigDecimal BASE_TAX_RATE = new BigDecimal("0.10");
 
 	public TaxResult calculate(Employee employee, BigDecimal salary, BigDecimal commission) {
+		if (salary == null) {
+			throw new IllegalArgumentException("Salary amount must not be null");
+		}
 		if (commission == null) {
 			commission = BigDecimal.ZERO;
 		}
