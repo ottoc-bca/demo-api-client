@@ -32,6 +32,8 @@ public class EmployeeService {
 			employee.setDepartment(
 					departmentRepository.findById(employee.getDepartment().getId())
 							.orElse(null));
+		} else {
+			employee.setDepartment(null);
 		}
 		return employeeRepository.save(employee);
 	}
@@ -47,6 +49,8 @@ public class EmployeeService {
 				existing.setDepartment(
 						departmentRepository.findById(employee.getDepartment().getId())
 								.orElse(null));
+			} else {
+				existing.setDepartment(null);
 			}
 			return employeeRepository.save(existing);
 		});
