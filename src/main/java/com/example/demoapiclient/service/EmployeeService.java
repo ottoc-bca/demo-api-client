@@ -28,6 +28,10 @@ public class EmployeeService {
 	}
 
 	public Employee save(Employee employee) {
+		if (employee.getDepartment() != null && employee.getDepartment().getId() != null) {
+			departmentRepository.findById(employee.getDepartment().getId())
+					.ifPresent(employee::setDepartment);
+		}
 		return employeeRepository.save(employee);
 	}
 
