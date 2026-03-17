@@ -13,3 +13,14 @@ CREATE TABLE IF NOT EXISTS employee (
     department_id BIGINT,
     FOREIGN KEY (department_id) REFERENCES department(id)
 );
+
+CREATE TABLE IF NOT EXISTS salary (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT NOT NULL,
+    gross_salary DECIMAL(12,2) NOT NULL,
+    tax DECIMAL(12,2) NOT NULL,
+    net_salary DECIMAL(12,2) NOT NULL,
+    applied_rules TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employee(id)
+);
